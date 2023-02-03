@@ -1,0 +1,11 @@
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/node_modules
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/.env
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/coverage
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/coverage.json
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/typechain
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/typechain-types
+
+# Hardhat files
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/cache
+spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/artifacts
+
