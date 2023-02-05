@@ -3,9 +3,31 @@ pragma solidity 0.8.17;
 
 
 // create a deal, monitor a deal, renew a deal, replicate data, insure data
-contract sPool {
+contract SpinozaV0Pool {
+
+    address public owner;
+    
+    mapping ( string cid => properties prop ) public data;
+
+    uint256 public totalTokenized;
+    uint256 public totalOwned;
+
+    struct properties {
+        string dataType;
+        // duration is deal info
+        string payloadCid;
+        // specify deals this is == replication factor
+
+        // where the data was pinned on ipfs
+        string dataURI;
+
+    }
 
 
+    constructor (address _owner) {
+        owner = _owner;
+    }
+    
     // 1 create a deal with an offchain replication worker
     // a client has pinned data on ipfs on his desktop that he would wont to externally and perpetually store 
     // on filecoin
@@ -22,14 +44,37 @@ contract sPool {
     // a deal activated nft can then be used to unlock stake plus earn rewards
 
     // penalty a replication worker is unable to replicate this data on the network he faces a soft slash used to compensate the client 
-    function tokenizeData() external {
+    // creates an nft owned by this contract
+    // 
 
+    function tokenizeData(properties calldata prop) external {
+        require(prop.payloadCid != "", "empty payload cid")
+        require(prop.dataURI != "", "empty data URI")
+        require(prop.dataType != "", "specify data type")
+        data[prop.payloadCid] = prop;
+        totalTokenized += 1;
+        totalOwned += 1;
 
         // catch error with errors or require
     }
     // to be in the factory createDataPool a single sided amm, contains all about deal and data market
     // function auctionTokenizedData() e
 
+    function fundTokenizedData() external {
 
+    }
+
+    function destroyTokenizedData(string memory _payloadCid) external view returns (string memory) {
+        return "Not Yet Supported at the moment";
+        // cancels all deals that this token_data was used and frees sps up
+    }
 
 }
+
+
+ 
+
+    
+
+ 
+

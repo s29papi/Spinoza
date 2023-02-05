@@ -8,4 +8,6 @@ spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/tasks/bounty-auction/cmd.txt
 # Hardhat files
 spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/cache
 spinoza_hardhat/Hardhat/Bounty_Dutch_Auction/artifacts
-
+Replication_Worker/go.sum
+Replication_Worker/main.go
+ipfs/
