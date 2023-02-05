@@ -1,0 +1,4 @@
+
+compile = yarn hardhat compile
+deploy = yarn hardhat deploy
+task = yarn hardhat send-coin --contract 0x0315358E4EfB6Fb3830a21baBDb28f6482c15aCa  --amount 20 --toaccount 0x2E0c954f186DC9ceDa9110dE30C9A83c77DA7E6a
