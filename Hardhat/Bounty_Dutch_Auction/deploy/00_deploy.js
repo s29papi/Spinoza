@@ -12,12 +12,12 @@ module.exports = async ({ deployments }) => {
     const chainId = network.config.chainId
     const tokensToBeMinted = networkConfig[chainId]["tokensToBeMinted"]
 
-    //deploy Simplecoin
-    const SimpleCoin = await ethers.getContractFactory('SimpleCoin', wallet);
-    console.log('Deploying Simplecoin...');
-    const simpleCoin = await SimpleCoin.deploy(tokensToBeMinted);
-    await simpleCoin.deployed()
-    console.log('SimpleCoin deployed to:', simpleCoin.address);
+    // //deploy Simplecoin
+    // const SimpleCoin = await ethers.getContractFactory('SimpleCoin', wallet);
+    // console.log('Deploying Simplecoin...');
+    // const simpleCoin = await SimpleCoin.deploy(tokensToBeMinted);
+    // await simpleCoin.deployed()
+    // console.log('SimpleCoin deployed to:', simpleCoin.address);
 
     // //deploy FilecoinMarketConsumer
     // const FilecoinMarketConsumer = await ethers.getContractFactory('FilecoinMarketConsumer', wallet);
@@ -32,4 +32,11 @@ module.exports = async ({ deployments }) => {
     // const dealRewarder = await DealRewarder.deploy();
     // await dealRewarder.deployed()
     // console.log('DealRewarder deployed to:', dealRewarder.address);
+
+    //deploy DealRewarder
+    const SpinozaV0Lend = await ethers.getContractFactory('SpinozaV0Lend', wallet);
+    console.log('Deploying SpinozaV0Lend...');
+    const spinozaV0Lend = await SpinozaV0Lend.deploy();
+    await spinozaV0Lend.deployed()
+    console.log('DealRewarder deployed to:', spinozaV0Lend.address);
 }

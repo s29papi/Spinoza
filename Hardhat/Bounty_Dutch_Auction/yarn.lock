@@ -1512,10 +1512,10 @@
   resolved "https://registry.yarnpkg.com/@zondax/filecoin-solidity-mock-api/-/filecoin-solidity-mock-api-0.2.0.tgz#de40a49f7c346b35fbf8e3395aef7134c98c6917"
   integrity sha512-pP3Ge4YctqOdlaM78dOOHF309q8T6cPZLQHVc0Gc1UleJnv9+ak85hfEfY7Crg3RUWhp8fR5IYUBYAoohm18NQ==
 
-"@zondax/filecoin-solidity@^0.4.0-beta.1":
-  version "0.4.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@zondax/filecoin-solidity/-/filecoin-solidity-0.4.0-beta.1.tgz#a695f77e2c3ea3c661b2d6fe0f44f69c3ed44e46"
-  integrity sha512-UKei/8t69gj6o7UZqFT0LsnkbNInpHI1t6Npt3aTMB8L0zoLTfKph5XtVs8hevXSrzGayM8DOWQJ4LuSbS8cqA==
+"@zondax/filecoin-solidity@^0.5.0-beta.1":
+  version "0.5.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@zondax/filecoin-solidity/-/filecoin-solidity-0.5.0-beta.1.tgz#2c493d7cc088dea5b7a8ed4d9fa5bc43eba42517"
+  integrity sha512-b5ZyqBdh22xAbE0eqpHxSfFQLpq3F10hrF++CJZq5ezve9ib0GE50kcNItnr/XH/ADg35QZEbsNLfsOKSnuNig==
   dependencies:
     "@openzeppelin/contracts" "^4.8.0"
     "@zondax/solidity-bignumber" "^0.1.0"
