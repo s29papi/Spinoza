@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-
+import { MarketAPI } from "@zondax/filecoin-solidity/contracts/v0.8/MarketAPI.sol";
+import { MarketTypes } from "@zondax/filecoin-solidity/contracts/v0.8/types/MarketTypes.sol";
 // create a deal, monitor a deal, renew a deal, replicate data, insure data
 contract SpinozaV0DataVault {
 
@@ -37,8 +38,11 @@ contract SpinozaV0DataVault {
 
         uint256 ask;
 
+        string dealCid;
+
         bool funded;
 
+        uint256 bounty;
     }
 
 
@@ -52,7 +56,7 @@ contract SpinozaV0DataVault {
         properties memory prop,
         string memory cid,
         uint256 replicationFactor
-        ) external onlyOwner {
+        ) public onlyOwner {
             require(replicationFactor >= 8, "R.F must be greater than or equals to 8");
             data[cid] = prop;
             totalTokenized += replicationFactor;
@@ -67,48 +71,37 @@ contract SpinozaV0DataVault {
         data[cid].ask = amount;
     }
 
+    function setDealCid(string memory cid, string memory dealCid) public {
+        data[cid].dealCid = dealCid;
+    }
+
     // fund tokenized data only after ask has been called
     function fundTokenizedData(
-        uint256 amount, 
         string memory cid
         ) external payable {
-        require(data[cid].ask == amount, "ask must equal msg.value");
+        require(data[cid].ask == msg.value, "ask must equal msg.value");
         data[cid].funded = true;
     }
 
     function swapOutDataAndPrecommit(
         string memory cid
     ) public view returns (properties memory){
-       
         // client also adds balance to the storage market actor
         return data[cid];
     }
 
-  
-
-
-
-
-
-    function destroyTokenizedData(string memory _cid) external view returns (string memory) {
-        return "Not Yet Supported at the moment";
+    function renewal(string memory cid, uint256 replicationFactor) public {
+        tokenizeData(data[cid], cid, replicationFactor);
     }
 
-
-    function setPayloadCid(string memory _payloadCid) external onlyOwner {
-        data[_payloadCid].payloadCid = _payloadCid;
+    function checkDealActivation(uint64 dealID) external {
+        MarketTypes.GetDealActivationReturn memory dealActivation = MarketAPI.getDealActivation(dealID);
+        if (dealActivation.activated == 0) revert ("Deal Not yet Activated");
     }
-
-    function getDataUri(string memory _cid) public view returns (string memory) {
-        return data[_cid].dataURI;
-    }
-
-
 
 }
 
 
- 
 
     
 
